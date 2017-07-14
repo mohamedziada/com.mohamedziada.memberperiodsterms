@@ -2,13 +2,16 @@
 
 require_once 'memberperiodsterms.civix.php';
 
+require_once 'CRM/Core/DAO.php';
+
 /**
  * Implements hook_civicrm_config().
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_config
  */
-function memberperiodsterms_civicrm_config(&$config) {
-  _memberperiodsterms_civix_civicrm_config($config);
+function memberperiodsterms_civicrm_config(&$config)
+{
+    _memberperiodsterms_civix_civicrm_config($config);
 }
 
 /**
@@ -16,8 +19,9 @@ function memberperiodsterms_civicrm_config(&$config) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_xmlMenu
  */
-function memberperiodsterms_civicrm_xmlMenu(&$files) {
-  _memberperiodsterms_civix_civicrm_xmlMenu($files);
+function memberperiodsterms_civicrm_xmlMenu(&$files)
+{
+    _memberperiodsterms_civix_civicrm_xmlMenu($files);
 }
 
 /**
@@ -25,8 +29,9 @@ function memberperiodsterms_civicrm_xmlMenu(&$files) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_install
  */
-function memberperiodsterms_civicrm_install() {
-  _memberperiodsterms_civix_civicrm_install();
+function memberperiodsterms_civicrm_install()
+{
+    _memberperiodsterms_civix_civicrm_install();
 }
 
 /**
@@ -34,8 +39,9 @@ function memberperiodsterms_civicrm_install() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_postInstall
  */
-function memberperiodsterms_civicrm_postInstall() {
-  _memberperiodsterms_civix_civicrm_postInstall();
+function memberperiodsterms_civicrm_postInstall()
+{
+    _memberperiodsterms_civix_civicrm_postInstall();
 }
 
 /**
@@ -43,8 +49,9 @@ function memberperiodsterms_civicrm_postInstall() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_uninstall
  */
-function memberperiodsterms_civicrm_uninstall() {
-  _memberperiodsterms_civix_civicrm_uninstall();
+function memberperiodsterms_civicrm_uninstall()
+{
+    _memberperiodsterms_civix_civicrm_uninstall();
 }
 
 /**
@@ -52,8 +59,9 @@ function memberperiodsterms_civicrm_uninstall() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_enable
  */
-function memberperiodsterms_civicrm_enable() {
-  _memberperiodsterms_civix_civicrm_enable();
+function memberperiodsterms_civicrm_enable()
+{
+    _memberperiodsterms_civix_civicrm_enable();
 }
 
 /**
@@ -61,8 +69,9 @@ function memberperiodsterms_civicrm_enable() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_disable
  */
-function memberperiodsterms_civicrm_disable() {
-  _memberperiodsterms_civix_civicrm_disable();
+function memberperiodsterms_civicrm_disable()
+{
+    _memberperiodsterms_civix_civicrm_disable();
 }
 
 /**
@@ -70,8 +79,9 @@ function memberperiodsterms_civicrm_disable() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_upgrade
  */
-function memberperiodsterms_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
-  return _memberperiodsterms_civix_civicrm_upgrade($op, $queue);
+function memberperiodsterms_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL)
+{
+    return _memberperiodsterms_civix_civicrm_upgrade($op, $queue);
 }
 
 /**
@@ -82,8 +92,9 @@ function memberperiodsterms_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) 
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_managed
  */
-function memberperiodsterms_civicrm_managed(&$entities) {
-  _memberperiodsterms_civix_civicrm_managed($entities);
+function memberperiodsterms_civicrm_managed(&$entities)
+{
+    _memberperiodsterms_civix_civicrm_managed($entities);
 }
 
 /**
@@ -95,8 +106,9 @@ function memberperiodsterms_civicrm_managed(&$entities) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_caseTypes
  */
-function memberperiodsterms_civicrm_caseTypes(&$caseTypes) {
-  _memberperiodsterms_civix_civicrm_caseTypes($caseTypes);
+function memberperiodsterms_civicrm_caseTypes(&$caseTypes)
+{
+    _memberperiodsterms_civix_civicrm_caseTypes($caseTypes);
 }
 
 /**
@@ -109,8 +121,9 @@ function memberperiodsterms_civicrm_caseTypes(&$caseTypes) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_angularModules
  */
-function memberperiodsterms_civicrm_angularModules(&$angularModules) {
-  _memberperiodsterms_civix_civicrm_angularModules($angularModules);
+function memberperiodsterms_civicrm_angularModules(&$angularModules)
+{
+    _memberperiodsterms_civix_civicrm_angularModules($angularModules);
 }
 
 /**
@@ -118,34 +131,167 @@ function memberperiodsterms_civicrm_angularModules(&$angularModules) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_alterSettingsFolders
  */
-function memberperiodsterms_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
-  _memberperiodsterms_civix_civicrm_alterSettingsFolders($metaDataFolders);
+function memberperiodsterms_civicrm_alterSettingsFolders(&$metaDataFolders = NULL)
+{
+    _memberperiodsterms_civix_civicrm_alterSettingsFolders($metaDataFolders);
 }
 
-// --- Functions below this ship commented out. Uncomment as required. ---
 
 /**
- * Implements hook_civicrm_preProcess().
+ * This hook is called when composing the tabs interface used for contacts, contributions and events.
  *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_preProcess
+ * @link https://docs.civicrm.org/dev/en/master/hooks/hook_civicrm_tabset/
  *
-function memberperiodsterms_civicrm_preProcess($formName, &$form) {
+ * @param string $tabsetName -name of the screen or visual element
+ * @param array $tabs - the array of tabs that will be displayed
+ * @param array $context - extra data about the screen or context in which the tab is used
+ *
+ * @return null - the return value is ignored
+ */
+function memberperiodsterms_civicrm_tabset($tabsetName, &$tabs, $context)
+{
+    $tableName = 'civicrm_membership_period';
 
-} // */
+    //check if the tabset is Contact Summary Page
+    if ($tabsetName == 'civicrm/contact/view') {
+
+
+        $contactId = $context['contact_id'];
+        // let's add a new "Membership period" tab.
+        $url = CRM_Utils_System::url('civicrm/membership_periods?cid=' . $contactId);
+
+
+//        var_dump($url);
+//        die();
+
+//        $results = CRM_Core_DAO::executeQuery($period_count);
+//        $pcount = 0;
+//        while ($results->fetch()) {
+//            $pcount++;
+//        }
+        $tabs[] = [
+            'id' => 'membershipPeriodsTermsTab', // unique value for TAB
+            'url' => $url, // URL for click
+            'title' => 'Membership Periods/Terms', // Display title
+            'weight' => 140,// for order details
+            'count' => '9', // display after title
+        ];
+
+    }
+}
+
+
+function civitest_civicrm_tabset($tabsetName, &$tabs, $context)
+{
+    //check if the tab set is Event manage
+    if ($tabsetName == 'civicrm/event/manage') {
+        if (!empty($context)) {
+            $eventID = $context['event_id'];
+            $url = CRM_Utils_System::url('civicrm/event/manage/volunteer',
+                "reset=1&snippet=5&force=1&id=$eventID&action=update&component=event");
+            //add a new Volunteer tab along with url
+            $tab['volunteer'] = array(
+                'title' => ts('Volunteers'),
+                'link' => $url,
+                'valid' => 1,
+                'active' => 1,
+                'current' => false,
+            );
+        } else {
+            $tab['volunteer'] = array(
+                'title' => ts('Volunteers'),
+                'url' => 'civicrm/event/manage/volunteer',
+            );
+        }
+        //Insert this tab into position 4
+        $tabs = array_merge(
+            array_slice($tabs, 0, 4),
+            $tab,
+            array_slice($tabs, 4)
+        );
+    }
+
+    //check if the tabset is Contribution Page
+    if ($tabsetName == 'civicrm/admin/contribute') {
+        if (!empty($context['contribution_page_id'])) {
+            $contribID = $context['contribution_page_id'];
+            $url = CRM_Utils_System::url('civicrm/admin/contribute/newtab',
+                "reset=1&snippet=5&force=1&id=$contribID&action=update&component=contribution");
+            //add a new Volunteer tab along with url
+            $tab['newTab'] = array(
+                'title' => ts('newTab'),
+                'link' => $url,
+                'valid' => 1,
+                'active' => 1,
+                'current' => false,
+            );
+        }
+        if (!empty($context['urlString']) && !empty($context['urlParams'])) {
+            $tab[] = array(
+                'title' => ts('newTab'),
+                'name' => ts('newTab'),
+                'url' => $context['urlString'] . 'newtab',
+                'qs' => $context['urlParams'],
+                'uniqueName' => 'newtab',
+            );
+        }
+        //Insert this tab into position 4
+        $tabs = array_merge(
+            array_slice($tabs, 0, 4),
+            $tab,
+            array_slice($tabs, 4)
+        );
+    }
+
+    //check if the tabset is Contact Summary Page
+    if ($tabsetName == 'civicrm/contact/view') {
+        // unset the contribition tab, i.e. remove it from the page
+        unset($tabs[1]);
+        $contactId = $context['contact_id'];
+        // let's add a new "contribution" tab with a different name and put it last
+        // this is just a demo, in the real world, you would create a url which would
+        // return an html snippet etc.
+        $url = CRM_Utils_System::url('civicrm/contact/view/contribution',
+            "reset=1&snippet=1&force=1&cid=$contactID");
+        // $url should return in 4.4 and prior an HTML snippet e.g. '<div><p>....';
+        // in 4.5 and higher this needs to be encoded in json.
+        // E.g. json_encode(array('content' => <html form snippet as previously provided>));
+        // or CRM_Core_Page_AJAX::returnJsonResponse($content) where $content is the html code
+        // in the first cases you need to echo the return and then exit,
+        // if you use CRM_Core_Page method you do not need to worry about this.
+        $tabs[] = array('id' => 'mySupercoolTab',
+            'url' => $url,
+            'title' => 'Contribution Tab Renamed',
+            'weight' => 300,
+        );
+    }
+}
+
 
 /**
- * Implements hook_civicrm_navigationMenu().
+ *  membershipperiods hook_civicrm_post().
+ */
+/**
+ * hook_civicrm_post() This hook is called after a db write on some core objects.
+ * @link https://docs.civicrm.org/dev/en/master/hooks/hook_civicrm_post/
  *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_navigationMenu
+ * post hooks are useful for developers building more complex applications and need to perform operations
+ * before CiviCRM takes action.
+ * This is very applicable when you need to maintain foreign key constraints etc.
+ * (when deleting an object, the child objects have to be deleted first).
  *
-function memberperiodsterms_civicrm_navigationMenu(&$menu) {
-  _memberperiodsterms_civix_insert_navigation_menu($menu, NULL, array(
-    'label' => ts('The Page', array('domain' => 'com.mohamedziada.memberperiodsterms')),
-    'name' => 'the_page',
-    'url' => 'civicrm/the-page',
-    'permission' => 'access CiviReport,access CiviContribute',
-    'operator' => 'OR',
-    'separator' => 0,
-  ));
-  _memberperiodsterms_civix_navigationMenu($menu);
-} // */
+ * @param string $op - operation being performed with CiviCRM object. ['view' | 'create' | 'edit'| 'delete' | 'trash' |'restore']
+ * @param string $objectName -  ['Activity' | 'Contribution' | 'Membership' | 'MembershipPayment' |'Organization' ... ]
+ * @param string $objectId -  the unique identifier for the object.
+ * @param object $objectRef - the reference to the object if available - call by reference
+ */
+function memberperiodsterms_civicrm_post($op, $objectName, $objectId, &$objectRef)
+{
+
+    $tableName = 'civicrm_membership_period';
+    // 1- check Object name 'Membership' || 'MembershipPayment'
+    // 2- check the Operation "create" || "edit"
+    // 3- get the membership Id and membership dates " start & end "
+
+
+}
