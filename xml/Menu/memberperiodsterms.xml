@@ -1,0 +1,13 @@
+<!--
+xml/Menu/memberperiodsterms.xml defines request-routing rules and associates the controller
+("CRM_Memberperiodsterms_Page_MembershipPeriods") with the web path civicrm/membership_periods.
+-->
+<?xml version="1.0"?>
+<menu>
+    <item>
+        <path>civicrm/membership_periods</path>
+        <page_callback>CRM_Memberperiodsterms_Page_MembershipPeriods</page_callback>
+        <title>MembershipPeriods</title>
+        <access_arguments>access CiviCRM</access_arguments>
+    </item>
+</menu>
