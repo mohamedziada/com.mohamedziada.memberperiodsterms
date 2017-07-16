@@ -25,10 +25,44 @@ class CRM_Memberperiodsterms_Page_MembershipPeriods extends CRM_Core_Page
     public function run()
     {
         // Example: Set the page-title dynamically; alternatively, declare a static title in xml/Menu/*.xml
-        CRM_Utils_System::setTitle(ts('MembershipPeriods'));
+        CRM_Utils_System::setTitle(ts('Membership Periods/Terms'));
+        $tableName = 'civicrm_membership_period';
+        $content = [];
+        $activeContents = false;
+        if (!empty($_GET['cid'])) {
+            $contactId = $_GET['cid'];
 
-        // Example: Assign a variable for use in a template
-        $this->assign('currentTime', date('Y-m-d H:i:s'));
+
+            $query = "SELECT p.* FROM $tableName p
+				  INNER JOIN civicrm_membership m ON m.id = p.membership_id
+				  WHERE m.contact_id = %1;
+				 ";
+            $params = [1 => [$contactId, 'Integer'],];
+            $result = CRM_Core_DAO::executeQuery($query, $params);
+
+            if ($result->N > 0) {// if result exits
+                $activeContents = true;
+
+                while ($result->fetch()) {
+                    $content[] = [
+                        'startdate' => $result->start_date,
+                        'enddate' => $result->end_date,
+                        'membership' => $result->membership_id,
+                        'contribution' => $result->contribution_id,
+                        'created' => $result->created_at,
+
+                    ];
+                }
+
+            } else {
+                $activeContents = false;
+            }
+
+
+        }// if $_GET
+
+        $this->assign('contents', $content);
+        $this->assign('activeContents', $activeContents);
 
         parent::run();
     }
