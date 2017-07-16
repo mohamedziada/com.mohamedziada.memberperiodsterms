@@ -98,6 +98,7 @@ class CRM_Memberperiodsterms_BAO_MembershipPeriods extends CRM_Memberperiodsterm
     public static function memberperiod($op, $objectName, $objectId, &$objectRef)
     {
 
+
         $tableName = 'civicrm_membership_period';
         // 1- check Object name 'Membership' || 'MembershipPayment'
         // 2- check the Operation "create" || "edit"
@@ -114,7 +115,7 @@ class CRM_Memberperiodsterms_BAO_MembershipPeriods extends CRM_Memberperiodsterm
             ###########
             //Query to get period row with membership if EndDate not changed
             // End Date very impt here cuz it is the period end
-            $query = "SELECT * FROM civicrm_membership_period 
+            $query = "SELECT * FROM $tableName
                     WHERE end_date = $membershipEndDate 
                     AND membership_id = $membershipID";
 
@@ -125,7 +126,7 @@ class CRM_Memberperiodsterms_BAO_MembershipPeriods extends CRM_Memberperiodsterm
             // maybe edit Start date || join_date || membership_type_id
             if ($result->fetch()) {
                 //update row to new date and get row by membershipID and EndDate
-                $query = "UPDATE civicrm_membership_period 
+                $query = "UPDATE $tableName
                       SET start_date = $membershipStartDate 
                       WHERE membership_id = $membershipID 
                      AND end_date = $membershipEndDate";
@@ -133,39 +134,36 @@ class CRM_Memberperiodsterms_BAO_MembershipPeriods extends CRM_Memberperiodsterm
             } else {
                 ####
                 // if membership not exit with end_date OR new membership
-
                 //get last period for membership id, last End_Date
                 $queryEndDate = "SELECT end_date 
-                        FROM civicrm_membership_period 
+                        FROM $tableName
                         WHERE membership_id = $membershipID 
                         ORDER BY end_date DESC
                         LIMIT 1";
 
                 $result = CRM_Core_DAO::executeQuery($queryEndDate);
 
-                if ($result->fetch()) {
+                if (!empty($result->end_date)) {// renewal or edit end_date
 
-                    if (!empty($result->end_date)) {// renewal or edit end_date
+                    $newEndDate = new DateTime($result->end_date);
+                    $newEndDate->modify('+1 day');// add one day for renewal
+                    $newEndDate = $newEndDate->format('Y-m-d');
 
-                        $newEndDate = new DateTime($result->end_date);
-                        $newEndDate->modify('+1 day');// add one day for renewal
-                        $newEndDate = $newEndDate->format('Y-m-d');
-
-                        $query = "INSERT INTO civicrm_membership_period 
+                    $queryInsert = "INSERT INTO $tableName 
                             (start_date, end_date, membership_id, contribution_id, created_at)
                             VALUES 
                             ('$newEndDate', '$membershipEndDate', $membershipID , null, NOW())";
 
-                    } else {// new membership
-                        $query = "INSERT INTO civicrm_membership_period 
+                } else {// new membership
+                    $queryInsert = "INSERT INTO $tableName
                                 (start_date, end_date, membership_id, contribution_id, created_at) 
                                 VALUES 
                                 ('$membershipStartDate', '$membershipEndDate', $membershipID, null, NOW())";
-                        // Will update contribution_id when payment made , check code down
-                    }
+                    // Will update contribution_id when payment made , check code down
                 }
+                 CRM_Core_DAO::executeQuery($queryInsert);
             }
-            CRM_Core_DAO::executeQuery($query);
+
 
             ############
             ## The membership period should be connected to a contribution record if a payment is taken for this membership.
@@ -176,13 +174,13 @@ class CRM_Memberperiodsterms_BAO_MembershipPeriods extends CRM_Memberperiodsterm
             $contributionID = $objectRef->contribution_id;
 
             $result = CRM_Core_DAO::executeQuery(
-                "SELECT * FROM civicrm_membership_period  WHERE contribution_id = $contributionID AND membership_id = $membershipID "
+                "SELECT * FROM $tableName WHERE contribution_id = $contributionID AND membership_id = $membershipID "
             );
 
             // if no row exist with this contribution ID
             if (!($result->fetch())) {
                 // update last row with membership ID and contribution ID = null
-                $query = "UPDATE civicrm_membership_period 
+                $query = "UPDATE $tableName
                       SET contribution_id = $contributionID
                       WHERE membership_id = $membershipID
                       AND contribution_id = null
