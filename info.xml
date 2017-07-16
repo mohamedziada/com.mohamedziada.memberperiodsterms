@@ -8,7 +8,7 @@
     <license>AGPL-3.0</license>
     <maintainer>
         <author>Mohamed Ziada</author>
-        <email>mohamed@compeast.com</email>
+        <email>mohamedziada@gmail.com</email>
     </maintainer>
     <urls>
         <url desc="Author">http://www.mohamedziada.com/</url>
@@ -23,7 +23,7 @@
     <compatibility>
         <ver>4.7</ver>
     </compatibility>
-    <comments>This is a new, undeveloped module</comments>
+    <comments>CiviCRM ext. test</comments>
     <civix>
         <namespace>CRM/Memberperiodsterms</namespace>
     </civix>
